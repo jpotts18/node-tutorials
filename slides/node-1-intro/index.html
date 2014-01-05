@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Node.js Introduction</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/bright/styles/screen.css">
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Node.js Introduction</h1>
+		<p>Jeff Potter <a href="http://twitter.com/jpotts18">@jpotts18</a></p>
+	</header>
+	<section class="slide cover" id="Cover"><div>
+		<h2>Node.js Introduction</h2>
+		<p>by <a href="http://twitter.com/jpotts18">Jeff Potter</a></p>
+		
+		<!--
+			To apply styles to the certain slides
+			set slide ID to get needed elements
+			-->
+		<style>
+			#Cover h2 {
+				margin:30px 0 0;
+				color:#FFF;
+				text-align:center;
+				font-size:70px;
+				}
+			#Cover p {
+				margin:10px 0 0;
+				text-align:center;
+				color:#FFF;
+				font-style:italic;
+				font-size:20px;
+				}
+`{
+					color:#FFF;
+					}
+		</style>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Where did Node.js come from?</h2>
+		<ul>
+			<li>Google's Open Source <a href="https://code.google.com/p/v8/">V8 Engine</a> created in 2008</li>
+			<li>Ryan Dahl embeds V8 engine and starts writing <a href="http://nodejs.org">Node.js</a> <a href="http://nodejs.org/api">API</a></li>
+			<br/>
+			<img src="pictures/chrome-v8.png" width="150">
+			<img src="pictures/plus.jpg" width="100">
+			<img src="pictures/dahl.jpg" width="150">
+			<img src="pictures/equal.png" width="80">
+			<img src="pictures/node.png" width="150">
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>What is Node.js?</h2>
+		<figure>
+			<blockquote>
+				<p><span class="next">Node.js is a <strong>platform</strong></span> <span class="next">built on Chrome's JavaScript runtime for easily building fast, scalable network applications.</span> <span class="next">Node.js uses an <a href="http://en.wikipedia.org/wiki/Event-driven_programming">event-driven</a>, <a href="http://stackoverflow.com/a/10570261/1736429">non-blocking I/O</a> model</span><span class="next"> that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.</span></p>
+			</blockquote>
+			<figcaption><a class="next" href="http://nodejs.org"> - Node.js Homepage</a></figcaption>
+		</figure>
+		<p class="note next">Simple answer is <i>"JavaScript on the server"</i></p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>What makes up the Node.js platform?</h2>
+		<p><span class="next"><b>Modules</b> make up the platform.</span> <span class="next">This is a list from the <a href="http://node.js/api/">manual</a>.</span></p>
+		<table class="next">
+		<tr>
+			<td><a href="http://nodejs.org/api/assert.html">Assert</a> (testing)</td>
+			<td><a href="http://nodejs.org/api/buffer.html">Buffer</a> </td>
+			<td><a href="http://nodejs.org/api/addons.html">C/C++ Addons</a></td>
+			<td><a href="http://nodejs.org/api/console.html">Console</a></td>
+		</tr>
+		<tr>
+			<td><a href="http://nodejs.org/api/crypto.html">Crypto</a></td>
+			<td><a href="http://nodejs.org/api/fs.html">File System</a></td>
+			<td><a href="http://nodejs.org/api/globals.html">Globals</a></a></td>
+			<td><a href="http://nodejs.org/api/http.html">HTTP</a></td>
+		</tr>
+		<tr>
+			<td><a href="http://nodejs.org/api/https.html">HTTPS</a></td>
+			<td><a href="http://nodejs.org/api/modules.html">Modules</a></td>
+			<td><a href="http://nodejs.org/api/net.html">Net</a> (networking)</td>
+			<td><a href="http://nodejs.org/api/OS.html">OS</a> (operating system)</td>
+		</tr>
+		<tr>
+			<td><a href="http://nodejs.org/api/path.html">Path</a> (file paths)</td>
+			<td><a href="http://nodejs.org/api/process.html">Process</a></td>
+			<td><a href="http://nodejs.org/api/stream.html">Stream</a></td>
+			<td><a href="http://nodejs.org/api/udp.html">UDP</a></td>
+		</tr>
+		<tr>
+			<td><a href="http://nodejs.org/api/url.html">URL</a></td>
+			<td><a href="http://nodejs.org/api/util.html">Utilities</a></td>
+			<td><a href="http://nodejs.org/api/tls.html">TLS/SSL</a></td>
+			<td><a href="http://nodejs.org/api/zlib.html">zlib</a> (compression)</td>
+		</tr>
+		</table>
+	</div></section>
+	<section class="slide"><div>
+		<h2>5 Line Web Server</h2>
+		<pre>	
+			<code class="next">// use Node.js <a href="http://nodejs.org/api/http.html#http_http">http</a> module by using <a href="http://nodejs.org/api/modules.html#modules_modules">module system</a></code>
+			<code class="next">var http = <a href="http://nodejs.org/api/globals.html#globals_require">require</a></b>('http');</code>
+			<code class="next">http.createServer<b>(</b>function (<a href="http://nodejs.org/api/http.html#http_http_request_options_callback">request</a>, <a href="http://nodejs.org/api/http.html#http_class_http_serverresponse">response</a>) {</code>
+  			<code class="next">	response.<a href="http://nodejs.org/api/http.html#http_response_writehead_statuscode_reasonphrase_headers">writeHead</a>(<a href="http://www.cheatography.com/kstep/cheat-sheets/http-status-codes/">200</a>, {'Content-Type': 'text/plain'});</code>
+  			<code class="next">	response.end('Hello World\n');</code>
+			<code class="next">}<b>)</b>.listen(8124);</code>
+			<code class="next">console.log('Server running at http://127.0.0.1:8124/');</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>What does a module look like?</h2>
+		<pre>
+       		<code class="next">//create a module in <b>circle.js</b></code>
+       		<code class="next">exports.area = function (r) {</code>
+  			<code class="next">  return Math.PI * r * r;</code>
+			<code class="next">};</code>
+			<code class="next">//use circle module in <b>app.js</b></em></code>
+			<code class="next">var circle = require('<b>./</b>circle.js');</code>
+			<code class="next">console.log('The area with radius 4 = ' + circle.area(4));</code>
+        </pre>
+        <p class="note">For more see <a href="http://nodejs.org/api/modules.html#modules_file_modules">File Modules</a></p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Can I get other modules?</h2>
+		<ul>
+			<li>I need to parse a <a href="https://npmjs.org/search?q=csv">CSV</a>, store data in to a <a href="https://npmjs.org/package/mongoose">MongoDB</a>, and <a href="https://npmjs.org/package/nodemailer">send email</a>. How am I supposed to use modules?</li>
+			<ol>
+				<li>Search <a href="https://npmjs.org/">npmjs.org</a> for the module you need</li>
+				<li><code>npm install {{csv}} --save</code></li>
+				<li>NPM downloads your module from the NPM registry</li>
+				<li>Because you called the <code>--save</code> this module and its version are recorded in a <a href="http://package.json.nodejitsu.com/">package.json</a> file</li>
+			</ol>
+			<p class="note">Tip: Choose your modules wisely. Check features and github.</p>
+
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>When to use Node.js?</h2>
+		<table>
+			<tr>
+				<td>+ Good Uses</td>
+				<td>- Bad Uses</td>
+			</tr>
+			<tr>
+				<td>+ JSON API's</td>
+				<td>- CPU heavy apps<td>
+			</tr>
+			<tr>
+				<td>+ Single Page Apps</td>
+				<td>- Simple CRUD / HTML apps</td>
+			</tr>
+			<tr>
+				<td>+ Utilizing Unix Tools</td>
+				<td>- Ohh Shiny...</td>
+			</tr>
+			<tr>
+				<td>+ Streaming data</td>
+				<td></td> 
+			</tr>
+			<tr>
+				<td>+ Soft-Realtime Applications</td>
+				<td></td>
+			</tr>
+		</table>
+		<p class="note">Borrowed from <a href="http://nodeguide.com/convincing_the_boss.html">Node Guide</a></p>
+	</div></section>
+	<section classs
+	<section class="slide cover" id="Picture"><div>
+		<h2>Pictures</h2>
+		<img src="pictures/picture.jpg" alt="">
+		<style>
+			#Picture h2 {
+				color:#FFF;
+				}
+		</style>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>You can even shout this way</h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Inner Navigation</h2>
+		<ol>
+			<li>Lets you reveal list items one by one</li>
+			<li class="next">To keep some key points</li>
+			<li class="next">In secret from audience</li>
+			<li class="next">But it will work only once</li>
+			<li class="next">Nobody wants to see the same joke twice</li>
+		</ol>
+	</div></section>
+	<section class="slide shout" id="SeeMore"><div>
+		<h2><img src="pictures/logo.svg" alt=""> <a href="https://github.com/shower/shower/">See more on GitHub</a></h2>
+		<style>
+			#Picture h2 {
+				color:#FFF;
+				}
+			#SeeMore h2 {
+				font-size:100px
+				}
+			#SeeMore img {
+				width:0.72em;
+				height:0.72em;
+				}
+		</style>
+	</div></section>
+	<p class="badge"><a href="https://github.com/shower/shower">Fork me on Github</a></p>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2013 Yours Truly, Famous Inc. -->
+	<!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>
