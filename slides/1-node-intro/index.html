@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=792, user-scalable=no">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<link rel="stylesheet" href="shower/themes/bright/styles/screen.css">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
 </head>
 <body class="list">
 	<header class="caption">
@@ -15,29 +15,10 @@
 	<section class="slide cover" id="Cover"><div>
 		<h2>Node.js Introduction</h2>
 		<p>by <a href="http://twitter.com/jpotts18">Jeff Potter</a></p>
-		
-		<!--
-			To apply styles to the certain slides
-			set slide ID to get needed elements
-			-->
-		<style>
-			#Cover h2 {
-				margin:30px 0 0;
-				color:#FFF;
-				text-align:center;
-				font-size:70px;
-				}
-			#Cover p {
-				margin:10px 0 0;
-				text-align:center;
-				color:#FFF;
-				font-style:italic;
-				font-size:20px;
-				}
-`{
-					color:#FFF;
-					}
-		</style>
+		<ul>
+			<li></li>
+		</ul>
+		<p class="note">Doing the best I can</p>
 	</div></section>
 	<section class="slide"><div>
 		<h2>Where did Node.js come from?</h2>
@@ -64,7 +45,7 @@
 	</div></section>
 	<section class="slide"><div>
 		<h2>What makes up the Node.js platform?</h2>
-		<p><span class="next"><b>Modules</b> make up the platform.</span> <span class="next">This is a list from the <a href="http://node.js/api/">manual</a>.</span></p>
+		<p><span class="next"><b>Modules</b> make up the platform.</span> <span class="next">This is a list from the <a href="http://nodejs.org/api/">manual</a>.</span></p>
 		<table class="next">
 		<tr>
 			<td><a href="http://nodejs.org/api/assert.html">Assert</a> (testing)</td>
@@ -82,7 +63,7 @@
 			<td><a href="http://nodejs.org/api/https.html">HTTPS</a></td>
 			<td><a href="http://nodejs.org/api/modules.html">Modules</a></td>
 			<td><a href="http://nodejs.org/api/net.html">Net</a> (networking)</td>
-			<td><a href="http://nodejs.org/api/OS.html">OS</a> (operating system)</td>
+			<td><a href="http://nodejs.org/api/os.html">OS</a> (operating system)</td>
 		</tr>
 		<tr>
 			<td><a href="http://nodejs.org/api/path.html">Path</a> (file paths)</td>
@@ -109,19 +90,6 @@
 			<code class="next">}<b>)</b>.listen(8124);</code>
 			<code class="next">console.log('Server running at http://127.0.0.1:8124/');</code>
 		</pre>
-	</div></section>
-	<section class="slide"><div>
-		<h2>What does a module look like?</h2>
-		<pre>
-       		<code class="next">//create a module in <b>circle.js</b></code>
-       		<code class="next">exports.area = function (r) {</code>
-  			<code class="next">  return Math.PI * r * r;</code>
-			<code class="next">};</code>
-			<code class="next">//use circle module in <b>app.js</b></em></code>
-			<code class="next">var circle = require('<b>./</b>circle.js');</code>
-			<code class="next">console.log('The area with radius 4 = ' + circle.area(4));</code>
-        </pre>
-        <p class="note">For more see <a href="http://nodejs.org/api/modules.html#modules_file_modules">File Modules</a></p>
 	</div></section>
 	<section class="slide"><div>
 		<h2>Can I get other modules?</h2>
@@ -167,52 +135,35 @@
 		</table>
 		<p class="note">Borrowed from <a href="http://nodeguide.com/convincing_the_boss.html">Node Guide</a></p>
 	</div></section>
-	<section classs
-	<section class="slide cover" id="Picture"><div>
-		<h2>Pictures</h2>
-		<img src="pictures/picture.jpg" alt="">
-		<style>
-			#Picture h2 {
-				color:#FFF;
-				}
-		</style>
+	<section class="slide"><div>
+		<h2>So what you are saying is...</h2>
+		<ul>
+			<li>Node.js is a built on a super fast V8 javascript runtime</li>
+			<li>Node.js is <strong>platform</strong> that consists of <strong>modules</strong></li>
+			<li>Besides the platform modules, third-party modules are on <a href="http://npmjs.org">npmjs.org</a></li>
+			<li>Node.js is very good at somethings, and bad at others</li>
+		</ul>
 	</div></section>
 	<section class="slide shout"><div>
-		<h2>You can even shout this way</h2>
+		<h2>That was easy</h2>
 	</div></section>
 	<section class="slide"><div>
-		<h2>Inner Navigation</h2>
-		<ol>
-			<li>Lets you reveal list items one by one</li>
-			<li class="next">To keep some key points</li>
-			<li class="next">In secret from audience</li>
-			<li class="next">But it will work only once</li>
-			<li class="next">Nobody wants to see the same joke twice</li>
-		</ol>
+		<h2>What does a module look like?</h2>
+		<pre>
+       		<code class="next">//create a module in <b>circle.js</b></code>
+       		<code class="next">exports.area = function (r) {</code>
+  			<code class="next">  return Math.PI * r * r;</code>
+			<code class="next">};</code>
+			<code class="next">//use circle module in <b>app.js</b></em></code>
+			<code class="next">var circle = require('<b>./</b>circle.js');</code>
+			<code class="next">console.log('The area with radius 4 = ' + circle.area(4));</code>
+        </pre>
+        <p class="note">For more see <a href="http://nodejs.org/api/modules.html#modules_file_modules">File Modules</a></p>
 	</div></section>
-	<section class="slide shout" id="SeeMore"><div>
-		<h2><img src="pictures/logo.svg" alt=""> <a href="https://github.com/shower/shower/">See more on GitHub</a></h2>
-		<style>
-			#Picture h2 {
-				color:#FFF;
-				}
-			#SeeMore h2 {
-				font-size:100px
-				}
-			#SeeMore img {
-				width:0.72em;
-				height:0.72em;
-				}
-		</style>
+	<section class="slide shout"><div>
+		<h2>Next Stop: How to use node.js</h2>
 	</div></section>
-	<p class="badge"><a href="https://github.com/shower/shower">Fork me on Github</a></p>
-	<!--
-		To hide progress bar from entire presentation
-		just remove “progress” element.
-		-->
 	<div class="progress"><div></div></div>
 	<script src="shower/shower.min.js"></script>
-	<!-- Copyright © 2013 Yours Truly, Famous Inc. -->
-	<!-- Photos by John Carey, fiftyfootshadows.net -->
 </body>
 </html>

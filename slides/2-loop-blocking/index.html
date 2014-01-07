@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Node.js Introduction</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Node.js Introduction</h1>
+		<p>Jeff Potter <a href="http://twitter.com/jpotts18">@jpotts18</a></p>
+	</header>
+	<section class="slide cover" id="Cover"><div>
+		<h2>Event Driven, Non-Blocking, Scalable</h2>
+		<p>by <a href="http://twitter.com/jpotts18">Jeff Potter</a></p>
+		<p class="note">Doing the best I can</p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Review</h2>
+		<figure>
+			<blockquote>
+				<p>Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, <b>scalable</b> network applications. Node.js uses an <b>event-driven, non-blocking I/O</b> model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.</span></p>
+			</blockquote>
+			<figcaption><a class="next" href="http://nodejs.org"> - Node.js Homepage</a></figcaption>
+		</figure>
+	</div></section>
+	<section class="slide"><div>
+		<h2>What if they happen at the same time?</h2>
+		<ul>
+			<li>Let's start a entirely new process.</li>
+			<code>new Object();</code>
+			<li>Let's handle them in a queue.</li>
+			<code>EventQueue.add()</code>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Threading</h2>
+		<ul>
+			<li>Get a new request and create a child process</li>
+		</ul>
+		<img src="./pictures/prefork.gif">
+	</div></section>
+	<section class="slide"><div>
+		<h2>Events</h2>
+		<img class="next" src="./pictures/eventloop.gif" width="25%">
+		<img class="next" src="./pictures/eventloop.png" width="70%" style="padding-left:20px;">
+	</div></section>
+	<section class="slide"><div>
+		<h2>Hello World Demo</h2>
+		<pre>	
+			<code class="next">// use Node.js <a href="http://nodejs.org/api/http.html#http_http">http</a> module by using <a href="http://nodejs.org/api/modules.html#modules_modules">module system</a></code>
+			<code class="next">var http = <a href="http://nodejs.org/api/globals.html#globals_require">require</a></b>('http');</code>
+			<code class="next">http.createServer<b>(</b>function (<a href="http://nodejs.org/api/http.html#http_http_request_options_callback">request</a>, <a href="http://nodejs.org/api/http.html#http_class_http_serverresponse">response</a>) {</code>
+  			<code class="next">	response.<a href="http://nodejs.org/api/http.html#http_response_writehead_statuscode_reasonphrase_headers">writeHead</a>(<a href="http://www.cheatography.com/kstep/cheat-sheets/http-status-codes/">200</a>, {'Content-Type': 'text/plain'});</code>
+  			<code class="next">	response.end('Hello World\n');</code>
+			<code class="next">}<b>)</b>.listen(8124);</code>
+			<code class="next">console.log('Server running at http://127.0.0.1:8124/');</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Can I get other modules?</h2>
+		<ul>
+			<li>I need to parse a <a href="https://npmjs.org/search?q=csv">CSV</a>, store data in to a <a href="https://npmjs.org/package/mongoose">MongoDB</a>, and <a href="https://npmjs.org/package/nodemailer">send email</a>. How am I supposed to use modules?</li>
+			<ol>
+				<li>Search <a href="https://npmjs.org/">npmjs.org</a> for the module you need</li>
+				<li><code>npm install {{csv}} --save</code></li>
+				<li>NPM downloads your module from the NPM registry</li>
+				<li>Because you called the <code>--save</code> this module and its version are recorded in a <a href="http://package.json.nodejitsu.com/">package.json</a> file</li>
+			</ol>
+			<p class="note">Tip: Choose your modules wisely. Check features and github.</p>
+
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>When to use Node.js?</h2>
+		<table>
+			<tr>
+				<td>+ Good Uses</td>
+				<td>- Bad Uses</td>
+			</tr>
+			<tr>
+				<td>+ JSON API's</td>
+				<td>- CPU heavy apps<td>
+			</tr>
+			<tr>
+				<td>+ Single Page Apps</td>
+				<td>- Simple CRUD / HTML apps</td>
+			</tr>
+			<tr>
+				<td>+ Utilizing Unix Tools</td>
+				<td>- Ohh Shiny...</td>
+			</tr>
+			<tr>
+				<td>+ Streaming data</td>
+				<td></td> 
+			</tr>
+			<tr>
+				<td>+ Soft-Realtime Applications</td>
+				<td></td>
+			</tr>
+		</table>
+		<p class="note">Borrowed from <a href="http://nodeguide.com/convincing_the_boss.html">Node Guide</a></p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>So what you are saying is...</h2>
+		<ul>
+			<li>Node.js is a built on a super fast V8 javascript runtime</li>
+			<li>Node.js is <strong>platform</strong> that consists of <strong>modules</strong></li>
+			<li>Besides the platform modules, third-party modules are on <a href="http://npmjs.org">npmjs.org</a></li>
+			<li>Node.js is very good at somethings, and bad at others</li>
+		</ul>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>That was easy</h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>What does a module look like?</h2>
+		<pre>
+       		<code class="next">//create a module in <b>circle.js</b></code>
+       		<code class="next">exports.area = function (r) {</code>
+  			<code class="next">  return Math.PI * r * r;</code>
+			<code class="next">};</code>
+			<code class="next">//use circle module in <b>app.js</b></em></code>
+			<code class="next">var circle = require('<b>./</b>circle.js');</code>
+			<code class="next">console.log('The area with radius 4 = ' + circle.area(4));</code>
+        </pre>
+        <p class="note">For more see <a href="http://nodejs.org/api/modules.html#modules_file_modules">File Modules</a></p>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>Next Stop: How to use node.js</h2>
+	</div></section>
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+</body>
+</html>
