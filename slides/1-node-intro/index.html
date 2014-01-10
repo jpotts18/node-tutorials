@@ -12,19 +12,27 @@
 		<h1>Node.js Introduction</h1>
 		<p>Jeff Potter <a href="http://twitter.com/jpotts18">@jpotts18</a></p>
 	</header>
-	<section class="slide cover" id="Cover"><div>
-		<h2>Node.js Introduction</h2>
-		<p>by <a href="http://twitter.com/jpotts18">Jeff Potter</a></p>
+	<section class="slide" id="Cover"><div>
+		<h2>Tutorial 1 - Introduction</h2>
 		<ul>
-			<li></li>
+			<li><a href="http://twitter.com/jpotts18">Jeff Potter</a></li>
+			<li>How to contact me</li>
+			<ul>
+				<li>Issues should go on the github issue tracker</li>
+				<li>Questions should go through Twitter <a href="http://twitter.com/jpotts18">@jpotts18</a></li>
+			</ul>
+			<li>The code - <a href="http://github.com/jpotts18/node-tutorials">http://github.com/jpotts18/node-tutorials</a></li>
 		</ul>
-		<p class="note">Doing the best I can</p>
+		<p class="notes">Doing the best I can</p>
+
+
 	</div></section>
 	<section class="slide"><div>
 		<h2>Where did Node.js come from?</h2>
 		<ul>
+			<li>The suprising <a href="http://fc05.deviantart.net/fs70/f/2010/282/c/7/flickr_loading_gif_by_twolanes-d30di3l.gif">inspiration</a>.</li>
 			<li>Google's Open Source <a href="https://code.google.com/p/v8/">V8 Engine</a> created in 2008</li>
-			<li>Ryan Dahl embeds V8 engine and starts writing <a href="http://nodejs.org">Node.js</a> <a href="http://nodejs.org/api">API</a></li>
+			<li>Ryan Dahl embeds V8 engine and starts writing Node.js platform</li>
 			<br/>
 			<img src="pictures/chrome-v8.png" width="150">
 			<img src="pictures/plus.jpg" width="100">
@@ -145,23 +153,16 @@
 		</ul>
 	</div></section>
 	<section class="slide shout"><div>
-		<h2>That was easy</h2>
+		<h2>Wow... simple!</h2>
 	</div></section>
 	<section class="slide"><div>
-		<h2>What does a module look like?</h2>
-		<pre>
-       		<code class="next">//create a module in <b>circle.js</b></code>
-       		<code class="next">exports.area = function (r) {</code>
-  			<code class="next">  return Math.PI * r * r;</code>
-			<code class="next">};</code>
-			<code class="next">//use circle module in <b>app.js</b></em></code>
-			<code class="next">var circle = require('<b>./</b>circle.js');</code>
-			<code class="next">console.log('The area with radius 4 = ' + circle.area(4));</code>
-        </pre>
-        <p class="note">For more see <a href="http://nodejs.org/api/modules.html#modules_file_modules">File Modules</a></p>
-	</div></section>
-	<section class="slide shout"><div>
-		<h2>Next Stop: How to use node.js</h2>
+		<h2>Next Topics</h2>
+		<ul>
+			<li>Event Driven Architecture</li>
+			<li>Non Blocking I/O</li>
+			<li>Scalability</li>
+		</ul>
+		<p class="notes">Create an <a href="https://github.com/jpotts18/node-tutorials/issues">issue, or tweet <a href="http://twitter.com/jpotts18">me</a>.</p>
 	</div></section>
 	<div class="progress"><div></div></div>
 	<script src="shower/shower.min.js"></script>
