@@ -17,10 +17,13 @@ setTimeout(function(){
 authenticate = function (req, res){
 	var username = req.body.username;
 	var password = req.body.password;
+	// findingUserByUsername
 	User.find(username, function (err, user) {
 		if(err) console.log('DB barfed...');
 		if(user){
+			// validating user
 			if(user.validatePassword(req.body.password)){
+				// updateLoginTime
 				user.updateLoginTime(function(err,us){
 					us.findApiKey(function(err, u){
 						res.send()
@@ -45,46 +48,49 @@ authenticate = function (req, res){
 // 5 Stopping Callback Hell
 // Use async - https://github.com/caolan/async
 
-// async = require('async');
+async = require('async');
 
 // // if you just need it in a order
-// async.series([
-//   function(){ console.log('Hello'); },
-//   function(){ console.dir('World'); }
-//   ]);
+async.series([
+	findUserByUsername,
+	validateUser,
+	updateApiKey,]);
  
 // // if you need the result to be passed 
 // async.waterfall();
 
-// async.waterfall([
-//   function(callback){
-//    callback(null, ‘one’, ‘two’);
-//   },
-//   function(arg1, arg2, callback){
-//    callback(null, ‘three’);
-//   },
-//   function(arg1, callback){
-//  // arg1 now equals ‘three’
-//  callback(null, ‘done’);
-//  }
-//  ], function (err, result) {
-//  // result now equals ‘done’ 
-// });
+async.waterfall([
+  function(callback){
+  	User.find(username, function(err, user) {
+  		if(err) callback(err,null);
+  		callback(null,user);
+  	};)
+  },
+  function(user, user.apiKey, callback){
+  	if(err) callback(null);
+   callback(null, ‘three’);
+  },
+  function(arg1, callback){
+ // arg1 now equals ‘three’
+ callback(null, ‘done’);
+ }
+ ], function (err, result) {
+ // result now equals ‘done’ 
+});
 
-// Q = require('q');
+Q = require('q');
 
-// // Use Q - https://github.com/kriskowal/q
+// Use Q - https://github.com/kriskowal/q
 
-// Q.fcall(checkIfNameExists)
-//  .then(checkIfPasswordIsGood)
-//  .then(createAccount)
-//  .then(createBlog)
-//  .then(function (result) {
-//  // Do something with the result
-// })
-//  .catch(function (error) {
-//  // Handle any error from all above steps
-// })
-//  .done();
-
-// 6 
+Q.fcall(checkIfNameExists)
+ .then(checkIfPasswordIsGood)
+ .then(createAccount)
+ .then(createBlog)
+ .then(function (result) {
+ // Do something with the result
+})
+ .catch(function (error) {
+ // Handle any error from all above steps
+})
+ .done();
+ 
